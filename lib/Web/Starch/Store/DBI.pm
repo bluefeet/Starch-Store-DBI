@@ -51,8 +51,9 @@ This must be set to either array ref arguments for L<DBI/connect>
 or a pre-built object (often retrieved using a method proxy).
 
 When configuring Starch from static configuration files using a
-method proxy is a good way to link your existing L<DBI>
-object constructor in with Starch so that starch doesn't build its own.
+L<method proxy|Web::Starch::Manual/METHOD PROXIES>
+is a good way to link your existing L<DBI> object constructor
+in with Starch so that starch doesn't build its own.
 
 =cut
 
@@ -284,10 +285,19 @@ sub _build_delete_sql {
     );
 }
 
-=head1 STORE METHODS
+=head1 METHODS
 
-See L<Web::Starch::Store> for more documentation about the methods
-which all stores implement.
+=head2 set
+
+Set L<Web::Starch::Store/set>.
+
+=head2 get
+
+Set L<Web::Starch::Store/get>.
+
+=head2 remove
+
+Set L<Web::Starch::Store/remove>.
 
 =cut
 
