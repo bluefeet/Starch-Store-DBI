@@ -27,6 +27,16 @@ Consider using L<Web::Starch::Store::DBIxConnector> instead
 of this store as L<DBIx::Connector> provides superior re-connection
 and transaction handling capabilities.
 
+The table in your database should contain three columns.  This
+is the SQLite syntax for creating a compatible table which you
+can modify to work for your particular database's syntax:
+
+    CREATE TABLE sessions (
+        key TEXT NOT NULL PRIMARY KEY,
+        data TEXT NOT NULL,
+        expiration INTEGER NOT NULL
+    )
+
 =cut
 
 use DBI;
@@ -136,6 +146,7 @@ has table => (
 =head2 key_column
 
 The column in the L</table> where the session ID is stored.
+Defaults to C<key>.
 
 =cut
 
