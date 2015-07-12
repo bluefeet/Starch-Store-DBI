@@ -1,12 +1,12 @@
-package Web::Starch::Store::DBI;
+package Starch::Store::DBI;
 
 =head1 NAME
 
-Web::Starch::Store::DBI - Session storage backend using DBI.
+Starch::Store::DBI - Session storage backend using DBI.
 
 =head1 SYNOPSIS
 
-    my $starch = Web::Starch->new(
+    my $starch = Starch->new(
         store => {
             class => '::DBI',
             dbh => [
@@ -23,7 +23,7 @@ Web::Starch::Store::DBI - Session storage backend using DBI.
 
 This Starch store uses L<DBI> to set and get session data.
 
-Consider using L<Web::Starch::Store::DBIxConnector> instead
+Consider using L<Starch::Store::DBIxConnector> instead
 of this store as L<DBIx::Connector> provides superior re-connection
 and transaction handling capabilities.
 
@@ -50,7 +50,7 @@ use strictures 2;
 use namespace::clean;
 
 with qw(
-    Web::Starch::Store
+    Starch::Store
 );
 
 =head1 REQUIRED ARGUMENTS
@@ -61,7 +61,7 @@ This must be set to either array ref arguments for L<DBI/connect>
 or a pre-built object (often retrieved using a method proxy).
 
 When configuring Starch from static configuration files using a
-L<method proxy|Web::Starch::Manual/METHOD PROXIES>
+L<method proxy|Starch::Manual/METHOD PROXIES>
 is a good way to link your existing L<DBI> object constructor
 in with Starch so that starch doesn't build its own.
 
@@ -300,15 +300,15 @@ sub _build_delete_sql {
 
 =head2 set
 
-Set L<Web::Starch::Store/set>.
+Set L<Starch::Store/set>.
 
 =head2 get
 
-Set L<Web::Starch::Store/get>.
+Set L<Starch::Store/get>.
 
 =head2 remove
 
-Set L<Web::Starch::Store/remove>.
+Set L<Starch::Store/remove>.
 
 =cut
 

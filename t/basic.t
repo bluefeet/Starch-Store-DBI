@@ -2,12 +2,12 @@
 use strictures 2;
 
 use Test::More;
-use Test::Web::Starch;
+use Test::Starch;
 
 my $db_file = 'test.db';
 unlink( $db_file ) if -f $db_file;
 
-my $tester = Test::Web::Starch->new(
+my $tester = Test::Starch->new(
     args => {
         store => {
             class  => '::DBI',
