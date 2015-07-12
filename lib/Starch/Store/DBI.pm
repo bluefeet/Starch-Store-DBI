@@ -94,7 +94,7 @@ sub _build_dbh {
 
 A L<Data::Serializer::Raw> for serializing the session data for storage
 in the L</data_column>.  Can be specified as string containing the
-serializer name, a hashref of Data::Serializer::Raw arguments, or as a
+serializer name, a hash ref of Data::Serializer::Raw arguments, or as a
 pre-created Data::Serializer::Raw object.  Defaults to C<JSON>.
 
 Consider using the C<JSON::XS> or C<Sereal> serializers for speed.
@@ -158,7 +158,7 @@ has key_column => (
 
 =head2 data_column
 
-The column in the L</table> which wil hold the session
+The column in the L</table> which will hold the session
 data.  Defaults to C<data>.
 
 =cut
