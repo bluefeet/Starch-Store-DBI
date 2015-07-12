@@ -313,7 +313,9 @@ Set L<Starch::Store/remove>.
 =cut
 
 sub set {
-    my ($self, $key, $data, $expires) = @_;
+    my ($self, $id, $namespace, $data, $expires) = @_;
+
+    my $key = $self->combine_keys( $id, $namespace );
 
     my $dbh = $self->dbh();
 
@@ -345,7 +347,9 @@ sub set {
 }
 
 sub get {
-    my ($self, $key) = @_;
+    my ($self, $id, $namespace) = @_;
+
+    my $key = $self->combine_keys( $id, $namespace );
 
     my $dbh = $self->dbh();
 
@@ -361,7 +365,9 @@ sub get {
 }
 
 sub remove {
-    my ($self, $key) = @_;
+    my ($self, $id, $namespace) = @_;
+
+    my $key = $self->combine_keys( $id, $namespace );
 
     my $dbh = $self->dbh();
 
