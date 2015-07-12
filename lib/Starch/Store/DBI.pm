@@ -23,7 +23,7 @@ Starch::Store::DBI - Session storage backend using DBI.
 
 This Starch store uses L<DBI> to set and get session data.
 
-Consider using L<Starch::Store::DBIxConnector> instead
+Consider using L<Starch::Store::DBIx::Connector> instead
 of this store as L<DBIx::Connector> provides superior re-connection
 and transaction handling capabilities.
 
