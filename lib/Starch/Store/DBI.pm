@@ -2,7 +2,7 @@ package Starch::Store::DBI;
 
 =head1 NAME
 
-Starch::Store::DBI - Session storage backend using DBI.
+Starch::Store::DBI - Starch storage backend using DBI.
 
 =head1 SYNOPSIS
 
@@ -15,13 +15,13 @@ Starch::Store::DBI - Session storage backend using DBI.
                 $password,
                 { RaiseError => 1 },
             ],
-            table => 'my_sessions',
+            table => 'my_states',
         },
     );
 
 =head1 DESCRIPTION
 
-This L<Starch> store uses L<DBI> to set and get session data.
+This L<Starch> store uses L<DBI> to set and get state data.
 
 Consider using L<Starch::Store::DBIx::Connector> instead
 of this store as L<DBIx::Connector> provides superior re-connection
@@ -31,7 +31,7 @@ The table in your database should contain three columns.  This
 is the SQLite syntax for creating a compatible table which you
 can modify to work for your particular database's syntax:
 
-    CREATE TABLE sessions (
+    CREATE TABLE starch_states (
         key TEXT NOT NULL PRIMARY KEY,
         data TEXT NOT NULL,
         expiration INTEGER NOT NULL
@@ -92,7 +92,7 @@ sub _build_dbh {
 
 =head2 serializer
 
-A L<Data::Serializer::Raw> for serializing the session data for storage
+A L<Data::Serializer::Raw> for serializing the state data for storage
 in the L</data_column>.  Can be specified as string containing the
 serializer name, a hash ref of Data::Serializer::Raw arguments, or as a
 pre-created Data::Serializer::Raw object.  Defaults to C<JSON>.
@@ -132,20 +132,20 @@ sub _build_serializer {
 
 =head2 table
 
-The table name where sessions are stored in the database.
-Defaults to C<sessions>.
+The table name where states are stored in the database.
+Defaults to C<starch_states>.
 
 =cut
 
 has table => (
     is      => 'ro',
     isa     => NonEmptySimpleStr,
-    default => 'sessions',
+    default => 'starch_states',
 );
 
 =head2 key_column
 
-The column in the L</table> where the session ID is stored.
+The column in the L</table> where the state ID is stored.
 Defaults to C<key>.
 
 =cut
@@ -158,7 +158,7 @@ has key_column => (
 
 =head2 data_column
 
-The column in the L</table> which will hold the session
+The column in the L</table> which will hold the state
 data.  Defaults to C<data>.
 
 =cut
@@ -172,7 +172,7 @@ has data_column => (
 =head2 expiration_column
 
 The column in the L</table> which will hold the epoch time
-when the session should be expired.  Defaults to C<expiration>.
+when the state should be expired.  Defaults to C<expiration>.
 
 =cut
 
@@ -186,7 +186,7 @@ has expiration_column => (
 
 =head2 insert_sql
 
-The SQL used to create session data.
+The SQL used to create state data.
 
 =cut
 
@@ -209,7 +209,7 @@ sub _build_insert_sql {
 
 =head2 update_sql
 
-The SQL used to update session data.
+The SQL used to update state data.
 
 =cut
 
@@ -232,7 +232,7 @@ sub _build_update_sql {
 
 =head2 exists_sql
 
-The SQL used to confirm whether session data already exists.
+The SQL used to confirm whether state data already exists.
 
 =cut
 
@@ -254,7 +254,7 @@ sub _build_exists_sql {
 
 =head2 select_sql
 
-The SQL used to retrieve session data.
+The SQL used to retrieve state data.
 
 =cut
 
@@ -277,7 +277,7 @@ sub _build_select_sql {
 
 =head2 delete_sql
 
-The SQL used to delete session data.
+The SQL used to delete state data.
 
 =cut
 
@@ -315,7 +315,7 @@ Set L<Starch::Store/remove>.
 sub set {
     my ($self, $id, $namespace, $data, $expires) = @_;
 
-    my $key = $self->combine_keys( $id, $namespace );
+    my $key = $self->manager->stringify_key( $id, $namespace );
 
     my $dbh = $self->dbh();
 
@@ -349,7 +349,7 @@ sub set {
 sub get {
     my ($self, $id, $namespace) = @_;
 
-    my $key = $self->combine_keys( $id, $namespace );
+    my $key = $self->manager->stringify_key( $id, $namespace );
 
     my $dbh = $self->dbh();
 
@@ -367,7 +367,7 @@ sub get {
 sub remove {
     my ($self, $id, $namespace) = @_;
 
-    my $key = $self->combine_keys( $id, $namespace );
+    my $key = $self->manager->stringify_key( $id, $namespace );
 
     my $dbh = $self->dbh();
 
