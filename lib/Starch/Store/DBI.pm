@@ -245,10 +245,9 @@ sub _build_exists_sql {
     my ($self) = @_;
 
     return sprintf(
-        'SELECT 1 FROM %s WHERE %s = ? AND %s > ?',
+        'SELECT 1 FROM %s WHERE %s = ?',
         $self->table(),
         $self->key_column(),
-        $self->expiration_column(),
     );
 }
 
@@ -267,11 +266,11 @@ sub _build_select_sql {
     my ($self) = @_;
 
     return sprintf(
-        'SELECT %s FROM %s WHERE %s = ? AND %s > ?',
+        'SELECT %s, %s FROM %s WHERE %s = ?',
         $self->data_column(),
+        $self->expiration_column(),
         $self->table(),
         $self->key_column(),
-        $self->expiration_column(),
     );
 }
 
@@ -323,7 +322,7 @@ sub set {
         $self->exists_sql(),
     );
 
-    my ($exists) = $dbh->selectrow_array( $sth, undef, $key, time() );
+    my ($exists) = $dbh->selectrow_array( $sth, undef, $key );
 
     $data = $self->serializer->serialize( $data );
     $expires += time();
@@ -357,9 +356,14 @@ sub get {
         $self->select_sql(),
     );
 
-    my ($data) = $dbh->selectrow_array( $sth, undef, $key, time() );
+    my ($data, $expiration) = $dbh->selectrow_array( $sth, undef, $key );
 
     return undef if !defined $data;
+
+    if ($expiration and $expiration < time()) {
+        $self->remove( $id, $namespace );
+        return undef;
+    }
 
     return $self->serializer->deserialize( $data );
 }
