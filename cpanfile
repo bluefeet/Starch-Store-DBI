@@ -1,6 +1,3 @@
-# Type::Tiny union types fail when Perl < 5.14.
-requires 'perl' => 5.014;
-
 requires 'Starch'           => 0.01;
 requires 'DBI'              => 1.608;
 requires 'strictures'       => 2.000000;

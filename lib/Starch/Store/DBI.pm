@@ -69,7 +69,7 @@ in with Starch so that starch doesn't build its own.
 
 has _dbh_arg => (
     is       => 'ro',
-    isa      => InstanceOf[ 'DBI::db' ] | ArrayRef,
+    isa      => (InstanceOf[ 'DBI::db' ]) | ArrayRef,
     init_arg => 'dbh',
     required => 1,
 );
@@ -105,7 +105,7 @@ C<Sereal> will likely be the fastest and produce the most compact data.
 
 has _serializer_arg => (
     is       => 'ro',
-    isa      => InstanceOf[ 'Data::Serializer::Raw' ] | HashRef | NonEmptySimpleStr,
+    isa      => ((InstanceOf[ 'Data::Serializer::Raw' ]) | HashRef) | NonEmptySimpleStr,
     init_arg => 'serializer',
     default  => 'JSON',
 );
