@@ -1,3 +1,6 @@
+# Type::Tiny union types fail when Perl < 5.14.
+requires 'perl' => 5.014;
+
 requires 'Starch'           => 0.01;
 requires 'DBI'              => 1.608;
 requires 'strictures'       => 2.000000;
@@ -8,9 +11,9 @@ requires 'Data::Serializer' => 0.60;
 requires 'Scalar::Util'     => 0;
 
 on test => sub {
-    requires 'JSON'        => 2;
     requires 'Test::Simple' => 0.96;
     requires 'Test::Fatal'  => 0;
     requires 'DBD::SQLite'  => 1.46;
+    requires 'JSON'         => 2;
 };
 
