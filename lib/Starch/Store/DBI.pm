@@ -314,6 +314,8 @@ Set L<Starch::Store/remove>.
 sub set {
     my ($self, $id, $namespace, $data, $expires) = @_;
 
+    local $Carp::Interal{ (__PACKAGE__) } = 1;
+
     my $key = $self->manager->stringify_key( $id, $namespace );
 
     my $dbh = $self->dbh();
@@ -348,6 +350,8 @@ sub set {
 sub get {
     my ($self, $id, $namespace) = @_;
 
+    local $Carp::Interal{ (__PACKAGE__) } = 1;
+
     my $key = $self->manager->stringify_key( $id, $namespace );
 
     my $dbh = $self->dbh();
@@ -370,6 +374,8 @@ sub get {
 
 sub remove {
     my ($self, $id, $namespace) = @_;
+
+    local $Carp::Interal{ (__PACKAGE__) } = 1;
 
     my $key = $self->manager->stringify_key( $id, $namespace );
 
