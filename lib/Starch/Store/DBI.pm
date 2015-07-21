@@ -316,7 +316,7 @@ sub set {
 
     local $Carp::Interal{ (__PACKAGE__) } = 1;
 
-    my $key = $self->manager->stringify_key( $id, $namespace );
+    my $key = $self->stringify_key( $id, $namespace );
 
     my $dbh = $self->dbh();
 
@@ -352,7 +352,7 @@ sub get {
 
     local $Carp::Interal{ (__PACKAGE__) } = 1;
 
-    my $key = $self->manager->stringify_key( $id, $namespace );
+    my $key = $self->stringify_key( $id, $namespace );
 
     my $dbh = $self->dbh();
 
@@ -377,7 +377,7 @@ sub remove {
 
     local $Carp::Interal{ (__PACKAGE__) } = 1;
 
-    my $key = $self->manager->stringify_key( $id, $namespace );
+    my $key = $self->stringify_key( $id, $namespace );
 
     my $dbh = $self->dbh();
 
