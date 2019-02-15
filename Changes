@@ -2,6 +2,7 @@ Revision history for Perl extension Starch-Store-DBI.
 
 {{$NEXT}}
 
+ - Migrate tests from Test::Simple to Test2::V0.
  - Migrate build tooling from Dist::Zilla to Minilla.
 
 0.02 2015-07-21
