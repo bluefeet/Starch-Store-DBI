@@ -1,6 +1,8 @@
-Revision history for Perl extension Starch::Store::DBI.
+Revision history for Perl extension Starch-Store-DBI.
 
 {{$NEXT}}
+
+ - Migrate build tooling from Dist::Zilla to Minilla.
 
 0.02 2015-07-21
 
