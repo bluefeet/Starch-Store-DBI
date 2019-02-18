@@ -55,7 +55,7 @@
       "test" : {
          "requires" : {
             "DBD::SQLite" : "1.46",
-            "JSON" : "2",
+            "JSON" : "2.00",
             "Test2::V0" : "0.000094"
          }
       }

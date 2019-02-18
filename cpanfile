@@ -1,16 +1,16 @@
-requires 'Starch'           => '0.10';
-requires 'DBI'              => '1.608';
+requires 'Starch' => '0.10';
+requires 'DBI' => '1.608';
 requires 'Data::Serializer' => '0.60';
 
-requires 'strictures'       => '2.000000';
+requires 'strictures' => '2.000000';
 requires 'namespace::clean' => '0.24';
-requires 'Moo'              => '2.000000';
-requires 'Type::Tiny'       => '1.000005';
+requires 'Moo' => '2.000000';
+requires 'Type::Tiny' => '1.000005';
 
 requires 'Scalar::Util';
 
 on test => sub {
-    requires 'Test2::V0'   => '0.000094';
+    requires 'Test2::V0' => '0.000094';
     requires 'DBD::SQLite' => '1.46';
-    requires 'JSON'        => '2';
+    requires 'JSON' => '2.00';
 };
