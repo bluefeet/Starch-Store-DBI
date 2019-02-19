@@ -1,6 +1,6 @@
 package Starch::Store::DBI;
 
-$Starch::Store::DBI::VERSION = '0.03';
+our $VERSION = '0.03';
 
 =head1 NAME
 
