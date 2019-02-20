@@ -1,5 +1,6 @@
 package Starch::Store::DBI;
-
+use 5.008001;
+use strictures 2;
 our $VERSION = '0.03';
 
 =head1 NAME
@@ -48,7 +49,6 @@ use Scalar::Util qw( blessed );
 use Data::Serializer::Raw;
 
 use Moo;
-use strictures 2;
 use namespace::clean;
 
 with qw(
