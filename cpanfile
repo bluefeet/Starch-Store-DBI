@@ -1,14 +1,14 @@
 requires 'perl' => '5.008001';
-requires 'Starch::Store' => '0.11';
+requires 'strictures' => '2.000000';
+requires 'namespace::clean' => '0.24';
+
 requires 'DBI' => '1.608';
 requires 'Data::Serializer' => '0.60';
 requires 'Data::Serializer::Raw' => '0.02';
-
-requires 'strictures' => '2.000000';
-requires 'namespace::clean' => '0.24';
 requires 'Moo' => '2.000000';
-requires 'Types::Standard' => '1.000005';
+requires 'Starch::Store' => '0.11';
 requires 'Types::Common::String' => '1.000005';
+requires 'Types::Standard' => '1.000005';
 
 requires 'Scalar::Util';
 
