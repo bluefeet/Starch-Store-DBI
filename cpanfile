@@ -1,5 +1,5 @@
 requires 'perl' => '5.008001';
-requires 'Starch' => '0.10';
+requires 'Starch' => '0.11';
 requires 'DBI' => '1.608';
 requires 'Data::Serializer' => '0.60';
 
