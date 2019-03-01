@@ -44,10 +44,12 @@
          "requires" : {
             "DBI" : "1.608",
             "Data::Serializer" : "0.60",
+            "Data::Serializer::Raw" : "0.02",
             "Moo" : "2.000000",
             "Scalar::Util" : "0",
-            "Starch" : "0.11",
-            "Type::Tiny" : "1.000005",
+            "Starch::Store" : "0.11",
+            "Types::Common::String" : "1.000005",
+            "Types::Standard" : "1.000005",
             "namespace::clean" : "0.24",
             "perl" : "5.008001",
             "strictures" : "2.000000"
@@ -57,7 +59,8 @@
          "requires" : {
             "DBD::SQLite" : "1.46",
             "JSON" : "2.00",
-            "Test2::V0" : "0.000094"
+            "Test2::V0" : "0.000094",
+            "Test::Starch" : "0.11"
          }
       }
    },
