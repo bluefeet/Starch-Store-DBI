@@ -397,7 +397,7 @@ L<https://github.com/bluefeet/Starch-Store-DBI/issues>
 
 =head1 AUTHORS
 
-Aran Clary Deltac E<lt>bluefeet@gmail.comE<gt>
+    Aran Clary Deltac <bluefeet@gmail.com>
 
 =head1 ACKNOWLEDGEMENTS
 
