@@ -1,7 +1,7 @@
 package Starch::Store::DBI;
 use 5.008001;
 use strictures 2;
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =head1 NAME
 
